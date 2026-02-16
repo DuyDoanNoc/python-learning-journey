@@ -1,0 +1,21 @@
+String Methods (LinkedIn):
+✓ .strip() = remove spaces from start and end
+✓ .lower() = all lowercase
+✓ .upper() = ALL UPPERCASE  
+✓ .title() = Title Case
+✓ .replace(old, new) = swap text
+✓ .find(text) = find position (returns number)
+✓ .split() = split string to texts
+    .split(",")
+    .split(".")
+    .split()[0]
+    .split()[1,2,....]
+    .split()[-1]
+
+String Formatting (LinkedIn):
+✓ f-strings = BEST (modern Python)
+✓ Syntax: f"text {variable}"
+✓ Can do math: f"{10 + 5}"
+✓ Format numbers: f"{pi:.2f}"
+✓ Remove number behind dot, change float to interger: f"{pi:.2f}"
+✓ Multi-line: f"""..."""

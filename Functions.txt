@@ -1,0 +1,21 @@
+Function
+    Có thể trả về giá trị khi dùng với return
+
+def multiplyByThree(val):
+    return 3 * val
+
+multiplyByThree(4)
+
+>>>>    12
+
+
+    Không nhất thiết trả về giá trị, nó có thể là một hàm thay đổi giá trị
+
+a = [1,2,3]
+def appendFour(myList):
+    myList.append(4)
+
+appendFour(a)
+print(a)
+
+>>>> [1, 2, 3, 4]

@@ -1,0 +1,46 @@
+If/Else
+
+a = True
+b = True
+c = True
+if a:
+    print('it is true!')
+    print(''Also print this')
+    if b:
+        print('Both are true')
+        if c:
+            print('All three are true')
+else:
+    print('It is false!')
+print('Always print this')
+
+>>>>    It is true!
+        Also print this
+        Always print this
+
+
+For loops - không cần có a = a + 1 như While loops vì không sợ nó lặp vô tận
+
+a = [1,2,3,4,5]
+for number in a:
+    print(number)
+
+>>>>    1
+        2
+        3
+        4
+        5
+
+
+While loops - cần có a = a + 1 do sợ nó lặp vô tận
+
+a = 0
+while a < 5:
+    print(a)
+    a = a + 1
+
+>>>>    0
+        1
+        2
+        3
+        4

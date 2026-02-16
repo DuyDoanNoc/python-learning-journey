@@ -1,0 +1,25 @@
+Lists - "[]" - thứ tự các elements trong Lists quan trọng và có thể ảnh hưởng kết quả. Vd: [1,2] == [2,1] >>> False
+    my_list = [1,2,3,4]
+    my_list = ['list', 'of', 'strings']
+    my_list = [1,'list',False,[]]
+    my_list = [[1,2,3],[False, True], []]
+
+
+Sets - "{}" - các values trong Sets là unique, thứ tự các elements trong Sets không quan trọng
+    my_set = {1,2,3,4}
+
+
+Tuples - "()" - thứ tự các elements trong Tuples quan trọng và có thể ảnh hưởng kết quả. Vd: (1,2) == (2,1) >>> False; Không thể chỉnh sửa dữ liệu của Tuples như thêm, sửa, xóa elements cho Tuples.
+    my_tuple = (1,2,3)
+
+
+Dictionary - "[]" - kiểu dữ liệu theo cặp, Dictionary có unique keys (khác với Sets có unique values)
+    my_dictionary = {
+        'apple' = 'A red fruit',
+        'bear' = 'A scary animal'
+    }
+    >>>>my_dictionary['apple'] >>>> 'A red fruit'
+
+len(my_xxx) - in ra tổng số elements trong list, set
+type(my_xxx) - in ra type của variable
+my_xxx.append(4) - 4 sẽ được add vào my_xxx (my_xxx không bao gồm Tuples)
