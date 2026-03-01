@@ -24,6 +24,7 @@ Output:
 Line1
 Line2
 """
+
 print("Col1\tCol2")
 """
 Output:
@@ -38,20 +39,20 @@ s = "  Hello, Python World!   "
 print(s[2])         # 'H'               (Output là H vì có 2 spaces)
 print(s[-1])        # ' '               (lấy ký tự cuối)
 print(s[2:7])       # 'Hello'           (lấy ra từ index 2 đến 6)
-print(s[::2])       # ' el,Pto ol! '    (Cách mỗi 2 ký tự lấy 1 lần)
+print(s[::2])       # ' el,Pto ol! '    (Cách mỗi 2 đơn vị lấy 1 ký tự)
 print(s[::-1])      # '  !dlroW nohtyP ,olleH  ' (lấy giá trị đảo ngược của s)
 
 # String methods thường dùng
-print(s.strip())            # 'Hello, Python World!' (xóa các khoảng trống 2 đầu)
-print(s.lower())            # '  hello, python world!  ' (chuyển tất cả các giá trị về in thường)
-print(s.upper())            # '  HELLO, PYTHON WORLD!  ' (chuyển các giá trị về in hoa)
+print(s.strip())                            # 'Hello, Python World!' (xóa các khoảng trống 2 đầu)
+print(s.lower())                            # '  hello, python world!  ' (chuyển tất cả các giá trị về in thường)
+print(s.upper())                            # '  HELLO, PYTHON WORLD!  ' (chuyển các giá trị về in hoa)
 print(s.replace("Python", "Testing"))       # '  Hello, Testing World!  ' (Thay 'Python' bằng 'Testing')
-print(s.split(","))         # ['  Hello', 'Python World!  '] (trả về 1 list ký tự bị ngắt bởi dấu phẩy)
-print(s.find("Python"))     # 9 (Vị trí đầu tiên tìm thấy cụm 'Python' tức là P ở index 9, trả về -1 nếu không có)
-print(s.count("l"))         # 3 (vì trong 's' có 3 lần chữ 'l' xuất hiện)
+print(s.split(","))                         # ['  Hello', 'Python World!  '] (trả về 1 list ký tự bị ngắt bởi dấu phẩy)
+print(s.find("Python"))                     # 9 (Vị trí đầu tiên tìm thấy cụm 'Python' tức là P ở index 9, trả về -1 nếu không có)
+print(s.count("l"))                         # 3 (vì trong 's' có 3 lần chữ 'l' xuất hiện)
 
 # Kiểm tra nội dung
-print("Python" in s)        # True (trả về True vì có 'Python' trong s)
+print("Python" in s)                        # True (trả về True vì có 'Python' trong s)
 print(s.strip().startswith("Hello"))        # True (True là vì đã xóa khoảng trắng với strip() và chuỗi 's' bắt đầu bằng 'Hello')
 print(s.strip().endswith("!"))              # True (True là vì đã xóa khoảng trắng với strip() và chuỗi 's' kết thúc bằng '!')
 print("abc123".isalnum())                   # True (True là vì chuỗi chỉ chứa chữ và số A-Z, a-z, 0-9)
@@ -60,8 +61,8 @@ print("123".isdigit())                      # True (True là vì chuỗi chỉ c
 
 # Nối chuỗi
 words = ["Hello", "World"]
-print(" ".join(words))                  # "Hello World" ('Hello' và 'World' được nối với nhau bằng space)
-print("-".join(["2024", "01", "15"]))   # "2024-01-15" (các ký tự được nối với nhau bằng gạch ngang)
+print(" ".join(words))                      # "Hello World" ('Hello' và 'World' được nối với nhau bằng space)
+print("-".join(["2024", "01", "15"]))       # "2024-01-15" (các ký tự được nối với nhau bằng gạch ngang)
 
 # === Bool Type ===
 
@@ -141,8 +142,8 @@ print(a % b)    # 2     Chia lấy phần dư (modulo)
 print(a ** b)   # 1419857 Lũy thừa (17^5)
 
 # Chú ý chia số âm
-print(-17 // 5) # -4    (Python làm tròn xuống, không phải về 0)
-print(-17 % 5)  # 3     (khác với nhiều ngôn ngữ khác)
+print(-19 // 5) # -4    (Python làm tròn xuống, không phải về 0)
+print(-19 % 5)  # 3     (khác với nhiều ngôn ngữ khác)
 
 # Gán kết hợp
 count = 0
@@ -191,7 +192,7 @@ print(80 <= score < 90)     # True - score nằm trong khoảng (80 - 90)
 print(True and True)        # True
 print(True and False)       # False
 
-# or - True khi ít nhất một True được đáp ứng
+# or - True khi ít nhất một True vế đúng
 print(True or False)    # True
 print(False or False)   # False
 
@@ -205,6 +206,16 @@ display_name = username or "Anonymous"  # Anonymous vì "" là falsy
 
 data = {"key": "value"}
 result = data and data.get("key")       # "value" sẽ được lấy ra
+
+"""
+Tại sao cần thêm vế 'data and'
+
+1. Tránh lỗi khi data có thể là None (hoặc kiểu không có .get):
+    data.get("key") một mình sẽ ném AttributeError nếu data là None.
+    data and data.get("key") không gọi .get khi data là falsy ⇒ an toàn.
+2. Hiệu năng nhỏ nhưng hữu ích: không tốn công gọi hàm khi biết chắc không cần.
+3. Ngắn gọn: thay cho viết if data: result = data.get("key") else: result = data.
+"""
 
 # Thứ tự ưu tiên: not > and > or
 print(True or False and False)      # True (and chạy trước: False and False = False, rồi True or False = True)
