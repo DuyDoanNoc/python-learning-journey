@@ -1,4 +1,3 @@
-"""
 reponse_body = ""
 if reponse_body:
     print("have data")
@@ -371,14 +370,3 @@ def check_input(username):
 for i in inputs:
     result = "VALID" if check_input(i) else "INVALID"
     print(f"{i!r:>15} -> {result}")
-
-"""
-
-raw_data = [
-    "John, 28, john@mail.com, active",
-    "Jane, abc, jane@mail, inactive",
-    "  , 35, bob@mail.com, active",
-    "Alice, 22, alice@mail.com, unknown",
-]
-split_raw_data = raw_data.split().strip()
-print(split_raw_data)
