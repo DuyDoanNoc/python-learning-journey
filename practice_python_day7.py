@@ -205,7 +205,8 @@ result = "PASS" if status_code == 200 else "FAIL"
 print(f"Tester: {tester} | Test: {test_name}")
 print(f"Status: {status_code} ({result}) | Response: {respone_time:.2f}s")
 print(f"Pass rate: {pass_rate:.1%}")
-"""
+
+
 bien_int = 123
 bien_float = 0.0
 bien_str = "string"
@@ -247,3 +248,137 @@ print(f"{rate:.2%}")
 price(f"{test_id:04d}")
 # Nhớ < căn trái, > căn phải, ^ căn giữa nhưng không nhớ cú pháp chính xác
 
+# Indexing (truy cập từng ký tự)
+s = "SDET_Python"
+#   0123456789...   (index từ 0)
+#   -11.........-1  (index âm từ cuối)
+
+print(s[0])     # S
+print(s[4])     # _
+print(s[-1])    # n (ký tự cuối)
+print(s[-3])    # h
+
+
+# Slicing (cắt chuỗi)
+
+s = "SDET_Python_Automation_2024"
+
+s[0:4]      # "SDET"    (index 0,1,2,3)
+s[-4:]      # "2024"    (4 ký tự cuối)
+s[5:11]     # "Python"
+s[::-1]     # "4202_noitam..."  (đảo ngược chuỗi)
+s[::3]      # "SPo_tao04"   (mỗi ký tự thứ 3)
+
+
+# String Methods quan trọng
+raw = "   Hello, PYTHON World!   "
+
+# Xử lý khoảng trắng
+raw.strip()         # "Hello, PYTHON World!"    (Xóa khoảng trắng 2 đầu)
+raw.lstrip()        # "Hello, PYTHON World!   " (Xóa khoảng trắng trái)
+raw.rstrip()        # "   Hello, PYTHON World!" (Xóa khoảng trắng phải)
+
+# Chuyển hoa/thường
+raw.strip().lower() # "hello, python world!"
+raw.strip().upper() # "HELLO, PYTHON WORLD!"
+
+# Tìm và thay thế
+raw.find("PYTHON")  # 8 (index vị trí tìm thấy "P")
+raw.find("Java")    # -1 (không tìm thấy)
+raw.replace("PYTHON", "TESTING")    # "   Hello, TESTING World!   "
+raw.count("l")      # 2 - tìm thấy 2 chữ l
+
+# Tách và nối
+"a,b,c".split(",")  # ["a", "b", "c"]
+"-".join(["a", "b", "c"])   #"a-b-c"
+
+# Kiểm tra đầu cuối
+"TC001".startswith("TC")    # True
+"report.csv".endswith(".csv")   # True
+
+# Kiểm tra nội dung
+"abc123".isalnum()  # True  - chỉ chữ và số
+"abc".isalpha()     # True  - chỉ chữ
+"123".isdigit()     # True  - chỉ số
+"   ".isspace()     # True  - chỉ khoảng trống
+
+
+# Ứng dụng SDET - Validate username
+def is_valid_username(username):
+    # Username hợp lệ: chỉ chữ+số, 3-20 ký tự, không rỗng
+    username = username.strip()
+    if not username:
+        return False
+    if not username.isalnum():
+        return False
+    if not (3 <= len(username) <= 20):
+        return False
+    return True
+
+# Test
+print(is_valid_username("admin123"))        # True
+print(is_valid_username("ab"))              # False - ngắn hơn 3 ký tự
+print(is_valid_username("user@name"))       # False - không chỉ chứa ký tự số và chữ
+print(is_valid_username("   "))             # False - Vì string rỗng do có strip khoảng trống
+
+
+# Method chaining - gọi liên tiếp
+result = "   Hello, PYTHON World!   ".strip().lower().replace("python", "testing").split() # ['hello,', 'testing', 'world!']
+
+
+# Thực hành
+# Bài 1
+s = "SDET_Python_Automation_2024"
+
+lay_SDET = s[0:3]
+print(lay_SDET)
+
+lay_2024 = s[-4:]
+print(lay_2024)
+
+lay_python = s[5:11]
+print(lay_python)
+
+dao_nguoc_chuoi = s[::-1]
+print(dao_nguoc_chuoi)
+
+# Bài 2
+raw = "   Hello, PYTHON World!   "
+
+raw = raw.strip()
+print(raw)
+raw = raw.lower()
+print(raw)
+raw = raw.replace("python", "testing")
+print(raw)
+raw_list = raw.split()
+print(raw_list)
+raw_join = "-".join(raw_list)
+print(raw_join)
+
+# Bài 3
+inputs = ["admin123", "ADMIN", "123456", "", "   ", "user@name", "test_01"]
+def check_input(username):
+    username = username.strip()
+    if not username:
+        return False
+    if not username.isalnum():
+        return False
+    if not (3 <= len(username) <= 20):
+        return False
+    return True
+
+for i in inputs:
+    result = "VALID" if check_input(i) else "INVALID"
+    print(f"{i!r:>15} -> {result}")
+
+"""
+
+raw_data = [
+    "John, 28, john@mail.com, active",
+    "Jane, abc, jane@mail, inactive",
+    "  , 35, bob@mail.com, active",
+    "Alice, 22, alice@mail.com, unknown",
+]
+split_raw_data = raw_data.split().strip()
+print(split_raw_data)
